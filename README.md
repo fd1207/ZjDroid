@@ -56,11 +56,11 @@ am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"backsmal
 例外情况：<BR>
 > 由于ApkProtect特定防修改检测，需要做如下修改即可解固该保护：
 > 
-> （1）在设备上创建特定目录（如/data/local）并 chmod 为777
+> (1)在设备上创建特定目录（如/data/local）并 chmod 为777
 > 
-> （2）复制zjdroid.apk到该目录，并修改文件名为zjdroid.jar
+> (2)复制zjdroid.apk到该目录，并修改文件名为zjdroid.jar
 > 
->  (3) 修改/data/data/de.robv.android.xposed.installer/conf/modules.list 模块代码文件修改为"zjdroid.jar"
+> (3) 修改/data/data/de.robv.android.xposed.installer/conf/modules.list 模块代码文件修改为"zjdroid.jar"
 > 重启设备即可。
 
 <BR>
