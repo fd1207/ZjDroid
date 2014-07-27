@@ -28,12 +28,12 @@ am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"dump_dex
 > 	pid 调用时把pid换成进程的id<BR>
 >  	查看结果:<BR>
 > > 	从Android的LogCat中查看结果,得到当前加载的dex的信息如:
-> > 
+> 
 > > 	The DexFile Infomation ->
-> > 
+> 
 > > 	07-27 02:29:52.728: D/zjdroid-shell-com.evernote(5365): filepath:/data/app/com.evernote-2.apk mCookie:1770063976
-> > 
-	End DexFile Infomation
+> 
+> > 	End DexFile Infomation
 
 <BR>
 2、获取指定DEX文件包含可加载类名：<BR>
@@ -42,8 +42,9 @@ am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"dump_cla
 > 	pid 调用时把pid换成进程的id
 > 
 > > 	dexpath 从上dex文件地址,如/data/app/com.evernote-2.apk
-> >  
-> >  查看结果:<BR>
+> 
+> >  查看结果:
+> 
 > > 	从Android的LogCat中查看结果,得到当前加载的class信息.
 
 <BR>
