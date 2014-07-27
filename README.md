@@ -1,5 +1,5 @@
-ZjDroid<BR>
-=======<BR>
+ZjDroid
+=======
 <BR>
 Android app dynamic reverse tool based on Xposed framework.<BR>
 <BR>
@@ -27,19 +27,26 @@ am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"dump_dex
 说用说明<BR>
 > 	pid 调用时把pid换成进程的id<BR>
 查看结果:<BR>
-> 	从Android的LogCat中查看结果,得到当前加载的dex的信息如:<BR>
-> 	The DexFile Infomation -><BR>
-> 	07-27 02:29:52.728: D/zjdroid-shell-com.evernote(5365): filepath:/data/app/com.evernote-2.apk mCookie:1770063976<BR>
-> 	End DexFile Infomation<BR>
+> 	从Android的LogCat中查看结果,得到当前加载的dex的信息如:
+> 
+> 	The DexFile Infomation ->
+> 
+> 	07-27 02:29:52.728: D/zjdroid-shell-com.evernote(5365): filepath:/data/app/com.evernote-2.apk mCookie:1770063976
+> 
+> 	End DexFile Infomation
+> 
 <BR>
 <BR>
 2、获取指定DEX文件包含可加载类名：<BR>
 am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"dump_class","dexpath":"*****"}'<BR>
 说用说明<BR>
-> 	pid 调用时把pid换成进程的id<BR>
-> 	dexpath 从上dex文件地址,如/data/app/com.evernote-2.apk<BR>
+> 	pid 调用时把pid换成进程的id
+> 
+> 	dexpath 从上dex文件地址,如/data/app/com.evernote-2.apk
+> 
 查看结果:<BR>
-> 	从Android的LogCat中查看结果,得到当前加载的class信息.<BR>
+> 	从Android的LogCat中查看结果,得到当前加载的class信息.
+> 
 <BR>
 <BR>
 4、根据Dalvik相关内存指针动态反编译指定DEX，并以文件形式保存。<BR>
@@ -47,11 +54,15 @@ am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"backsmal
 <BR>
 该方式可以脱壳目前大部分流行的加固防护。(由于手机性能问题，运行较忙)<BR>
 例外情况：<BR>
-由于ApkProtect特定防修改检测，需要做如下修改即可解固该保护：<BR>
-（1）在设备上创建特定目录（如/data/local）并 chmod 为777<BR>
-（2）复制zjdroid.apk到该目录，并修改文件名为zjdroid.jar<BR>
- (3) 修改/data/data/de.robv.android.xposed.installer/conf/modules.list 模块代码文件修改为"zjdroid.jar"<BR>
-从启设备即可。<BR>
+> 由于ApkProtect特定防修改检测，需要做如下修改即可解固该保护：
+> 
+> （1）在设备上创建特定目录（如/data/local）并 chmod 为777
+> 
+> （2）复制zjdroid.apk到该目录，并修改文件名为zjdroid.jar
+> 
+>  (3) 修改/data/data/de.robv.android.xposed.installer/conf/modules.list 模块代码文件修改为"zjdroid.jar"<BR>
+从启设备即可。
+> 
 <BR>
 5、Dump指定DEX内存中的数据并保存到文件（数据为odex格式，可在pc上反编译）。<BR>
 am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"dump_dexfile","dexpath":"*****"}'<BR>
@@ -60,7 +71,8 @@ am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"dump_dex
 6、Dump指定内存空间区域数据到文件<BR>
 am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"dump_mem","startaddr":1234567,"length":123}'<BR>
 说用说明<BR>
-> 	startaddr 注意此值是10进制<BR>
+> 	startaddr 注意此值是10进制
+> 
 <BR>
 7、Dump Dalvik堆栈信息到文件，文件可以通过java heap分析工具分析处理。<BR>
 am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"dump_heap"}'<BR>
