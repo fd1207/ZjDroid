@@ -5,9 +5,9 @@ Android app dynamic reverse tool based on Xposed framework.<BR>
 <BR>
 前提条件：<BR>
 1、已Root手机一部<BR>
-2、安装Xposed installer（ http://dl.xposed.info/latest.apk）,并从Xposed installer安装Xposed Framework;<BR>
-<BR>
-一、ZjDroid工具介绍<BR>
+2、[安装Xposed installer](http://dl.xposed.info/latest.apk),并从Xposed installer安装Xposed Framework<BR>
+
+### 一、ZjDroid工具介绍<BR>
 <BR>
 ZjDroid是基于Xposed Framewrok的动态逆向分析模块，逆向分析者可以通过ZjDroid完成以下工作：<BR>
 1、DEX文件的内存dump<BR>
@@ -20,7 +20,7 @@ ZjDroid是基于Xposed Framewrok的动态逆向分析模块，逆向分析者可
 8、在目标进程动态运行lua脚本。<BR>
 <BR>
 <BR>
-二、ZjDroid相关命令<BR>
+## 二、ZjDroid相关命令<BR>
 <BR>
 1、获取APK当前加载DEX文件信息：<BR>
 am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"dump_dexinfo"}'<BR>
@@ -34,8 +34,7 @@ am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"dump_dex
 > 	07-27 02:29:52.728: D/zjdroid-shell-com.evernote(5365): filepath:/data/app/com.evernote-2.apk mCookie:1770063976
 > 
 > 	End DexFile Infomation
-> 
-<BR>
+
 <BR>
 2、获取指定DEX文件包含可加载类名：<BR>
 am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"dump_class","dexpath":"*****"}'<BR>
@@ -46,8 +45,7 @@ am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"dump_cla
 > 
 查看结果:<BR>
 > 	从Android的LogCat中查看结果,得到当前加载的class信息.
-> 
-<BR>
+
 <BR>
 4、根据Dalvik相关内存指针动态反编译指定DEX，并以文件形式保存。<BR>
 am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"backsmali","dexpath":"*****"}'<BR>
@@ -60,7 +58,8 @@ am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"backsmal
 > 
 > （2）复制zjdroid.apk到该目录，并修改文件名为zjdroid.jar
 > 
->  (3) 修改/data/data/de.robv.android.xposed.installer/conf/modules.list 模块代码文件修改为"zjdroid.jar"<BR>
+>  (3) 修改/data/data/de.robv.android.xposed.installer/conf/modules.list 模块代码文件修改为"zjdroid.jar"
+
 从启设备即可。
 > 
 <BR>
@@ -72,8 +71,7 @@ am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"dump_dex
 am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"dump_mem","startaddr":1234567,"length":123}'<BR>
 说用说明<BR>
 > 	startaddr 注意此值是10进制
-> 
-<BR>
+
 7、Dump Dalvik堆栈信息到文件，文件可以通过java heap分析工具分析处理。<BR>
 am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"dump_heap"}'<BR>
 <BR>
@@ -84,13 +82,12 @@ am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"dump_hea
 可以动态触发特定逻辑。<BR>
 am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"invoke","filepath":"****"}'<BR>
 <BR>
-luajava相关使用方法：<BR>
-http://www.keplerproject.org/luajava/<BR>
+[luajava相关使用方法：](http://www.keplerproject.org/luajava/)<BR>
 <BR>
 8、敏感API调用监控<BR>
 <BR>
 <BR>
-三、相关命令执行结果查看：<BR>
+### 三、相关命令执行结果查看：<BR>
 <BR>
 1、命令执行结果：<BR>
 adb shell logcat -s zjdroid-shell-{package name}<BR>
