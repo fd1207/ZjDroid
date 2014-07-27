@@ -25,27 +25,28 @@ ZjDroid是基于Xposed Framewrok的动态逆向分析模块，逆向分析者可
 1、获取APK当前加载DEX文件信息：<BR>
 am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"dump_dexinfo"}'<BR>
 说用说明<BR>
-> 	pid 调用时把pid换成进程的id<BR>
->  	查看结果:<BR>
-> > 	从Android的LogCat中查看结果,得到当前加载的dex的信息如:
+> pid 调用时把pid换成进程的id<BR>
+>  查看结果:
 > 
-> > 	The DexFile Infomation ->
+> > 从Android的LogCat中查看结果,得到当前加载的dex的信息如:
 > 
-> > 	07-27 02:29:52.728: D/zjdroid-shell-com.evernote(5365): filepath:/data/app/com.evernote-2.apk mCookie:1770063976
+> > The DexFile Infomation ->
 > 
-> > 	End DexFile Infomation
+> > 07-27 02:29:52.728: D/zjdroid-shell-com.evernote(5365): filepath:/data/app/com.evernote-2.apk mCookie:1770063976
+> 
+> > End DexFile Infomation
 
 <BR>
 2、获取指定DEX文件包含可加载类名：<BR>
 am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"dump_class","dexpath":"*****"}'<BR>
 说用说明<BR>
-> 	pid 调用时把pid换成进程的id
+> pid 调用时把pid换成进程的id
 > 
-> > 	dexpath 从上dex文件地址,如/data/app/com.evernote-2.apk
+> > dexpath 从上dex文件地址,如/data/app/com.evernote-2.apk
 > 
 > >  查看结果:
 > 
-> > 	从Android的LogCat中查看结果,得到当前加载的class信息.
+> > 从Android的LogCat中查看结果,得到当前加载的class信息.
 
 <BR>
 4、根据Dalvik相关内存指针动态反编译指定DEX，并以文件形式保存。<BR>
@@ -70,7 +71,7 @@ am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"dump_dex
 6、Dump指定内存空间区域数据到文件<BR>
 am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"dump_mem","startaddr":1234567,"length":123}'<BR>
 说用说明<BR>
-> 	startaddr 注意此值是10进制
+> startaddr 注意此值是10进制
 
 7、Dump Dalvik堆栈信息到文件，文件可以通过java heap分析工具分析处理。<BR>
 am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"dump_heap"}'<BR>
