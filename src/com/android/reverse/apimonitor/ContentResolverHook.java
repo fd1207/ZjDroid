@@ -97,7 +97,7 @@ public class ContentResolverHook extends ApiMonitorHook {
 			else {
 				String selectstr = selection;
 				for (int i = 0; i < selectionArgs.length; i++) {
-					selectstr = selectstr.replaceFirst("?", selectionArgs[i]);
+					selectstr = selectstr.replaceFirst("\\?", selectionArgs[i]);
 				}
 				sb.append(selectstr);
 			}
@@ -110,7 +110,14 @@ public class ContentResolverHook extends ApiMonitorHook {
 		sb.append(" update ");
 		sb.append("[" + uri.toString() + "]");
 		sb.append(" set ");
-		String[] keysArray = (String[]) this.getContentValuesKeySet(cv).toArray();
+		
+		Object [] temp=this.getContentValuesKeySet(cv).toArray();
+		String[] keysArray =new String[temp.length];
+		
+		for(int i=0; i<temp.length;i++){
+			keysArray[i]=temp[i].toString();
+		}
+		
 		for (int i = 0; i < keysArray.length; i++) {
 			if (i == keysArray.length - 1)
 				sb.append(" " + keysArray[i] + "=" + cv.get(keysArray[i]));
@@ -124,7 +131,7 @@ public class ContentResolverHook extends ApiMonitorHook {
 			else {
 				String selectstr = selection;
 				for (int i = 0; i < selectionArgs.length; i++) {
-					selectstr = selectstr.replaceFirst("?", selectionArgs[i]);
+					selectstr = selectstr.replaceFirst("\\?", selectionArgs[i]);
 				}
 				sb.append(selectstr);
 			}
